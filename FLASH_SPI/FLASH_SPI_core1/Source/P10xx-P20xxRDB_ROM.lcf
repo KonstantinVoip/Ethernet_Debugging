@@ -1,0 +1,52 @@
+/* Based on default linker command file for PPC EABI */
+
+MEMORY {
+	ram    : org = 0x00002000
+	rom    : org = 0xfffc0000  
+	rom_4k : org = 0xfffff000
+}
+
+FORCEACTIVE { gInterruptVectorTable, __reset }
+
+SECTIONS {
+
+
+	GROUP : {
+		.intvec: {}
+		.text (TEXT): {}
+		.rodata (CONST) : {
+			*(.rdata)
+			*(.rodata)
+		}
+		.ctors : {}
+		.dtors : {}
+		extab : {}
+		extabindex : {}
+	} > rom
+	
+	GROUP : {
+		.data : {}
+		.sdata : {}
+		.sbss : {}
+		.sdata2 : {}
+		.sbss2 : {}
+		.bss : {}
+		.PPC.EMB.sdata0 : {} 
+		.PPC.EMB.sbss0 : {}		
+	} > ram
+
+	GROUP : {
+		.= 0xFFFFF000;
+		.init LOAD(0xFFFFF000): {} 
+		.= 0xFFFFFFFC;
+		.reset LOAD(0xFFFFFFFC) : {}
+	} > rom_4k 	
+				
+
+	// The dummy section is just a placeholder.  The linker automatically
+	// generates an address for it in the ROM image, which tells us
+	// where the end of the ROM image is.
+
+	.dummy : {
+	}
+}
