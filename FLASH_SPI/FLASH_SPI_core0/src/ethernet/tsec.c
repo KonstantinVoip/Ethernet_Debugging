@@ -867,7 +867,7 @@ printf("Read_Iter_12, Num=%d Raddress =0x%x ->Rdata=0x%x|\n\r",l_adress_read12,f
 //write_to_PLIS(test_full_packet_mas,256);  
 //
 
-write_toPLIS_success();
+//write_toPLIS_success();
 
 
 
@@ -1620,15 +1620,15 @@ void tsec_recv(struct eth_device *dev,struct eth_device *dev2,struct eth_device 
   
   for(;;)
   {
-  	    
-  	 //assmble_packet(256);
+  	  // assmble_packet(42); 
+  	 assmble_packet(256);
   	   
-  	 // assmble_packet(64);
+  	  //assmble_packet(128);
   	 //  assmble_packet(super_mas,759); 
     
   	 
   	 
-  //#if 0	 
+  #if 0	 
   	 	while (!(tsec1.rxbd[tsec1_rxIdx].status & RXBD_EMPTY))
 	 	{	
         
@@ -1693,7 +1693,7 @@ void tsec_recv(struct eth_device *dev,struct eth_device *dev2,struct eth_device 
 	  	
 	  	}
    
-  // #endif
+   #endif
    
    #if 0
    
