@@ -1,6 +1,7 @@
 #ifndef spiimage_h
 #define spiimage_h
 
+///
 const unsigned int s_buf[131328]=
 {
 0x00000000,0x00000000,0x00000000,0x00000000,
