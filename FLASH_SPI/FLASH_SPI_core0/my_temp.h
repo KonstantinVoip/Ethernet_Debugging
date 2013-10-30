@@ -1,6 +1,6 @@
 //Глобальная структура spi_flash!!!!
  //static struct spi_flash *flash;
-
+ //
 //Прототипы функций нахождения min и max
 /*
 size_t min(size_t,unsigned int);
